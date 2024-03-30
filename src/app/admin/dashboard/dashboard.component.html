@@ -142,10 +142,10 @@
                                     <tbody>
                                         <tr *ngFor="let members of teamMemberGroup.Members">
                                             <td>{{members.ID}}</td>
-                                            <td [ngSwitch]="TeamMembers.Members.Status">
-                                                <span *ngSwitchCase = "'Available'" style="color: green;">{{members.Name}}</span>
-                                                <span *ngSwitchCase = "'Busy'" style="color: orange;">{{members.Name}}</span>
-                                                <span *ngSwitchCase = "'In Meeting'" style="color: red;">{{members.Name}}</span>
+                                            <td [ngSwitch]="members.Status">
+                                                <div *ngSwitchCase = "'Available'" style=" color: green;">{{members.Name}}</div>
+                                                <div *ngSwitchCase = "'Busy'" style="color: orange;">{{members.Name}}</div>
+                                                <div *ngSwitchCase = "'In Meeting'" style="color: red;">{{members.Name}}</div>
                                                 <span *ngSwitchCase = "'Offline'" style="color: black;">{{members.Name}}</span>
                                                 
                                             </td>
