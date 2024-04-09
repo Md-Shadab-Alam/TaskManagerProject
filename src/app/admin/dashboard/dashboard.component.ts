@@ -9,6 +9,7 @@ import { DashboardService } from 'src/app/dashboard.service';
 export class DashboardComponent implements OnInit
 {
 
+  //declaration of variable
   Designations: string = "";
   Username:string = "";
   NoOfTeamMembers:number = 0;
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit
   Years: number[]=[];
   TeamMembersSummary: any =[];
   TeamMembers: any =[];
+  selectedProject: string;
 
   constructor(private dashboardService: DashboardService){
 
@@ -98,24 +100,28 @@ onProjectChange($event)
   //console.log($event.target.innerHTML)
   if($event.target.innerHTML == "Project A")
   {
+    this.selectedProject = "Project A"
     this.ProjectCost = 2113507;
     this.currentExpenditure = 96788;
     this.AvailableFunds = 52536;
   }
   else if($event.target.innerHTML == "Project B")
   {
+    this.selectedProject = "Project B"
     this.ProjectCost = 123456;
     this.currentExpenditure = 456747;
     this.AvailableFunds = 724536;
   }
   else if($event.target.innerHTML == "Project C")
   {
+    this.selectedProject = "Project C"
     this.ProjectCost = 211346467;
     this.currentExpenditure = 56788;
     this.AvailableFunds = 34567546;
   }
   else if($event.target.innerHTML == "Project D")
   {
+    this.selectedProject = "Project D"
     this.ProjectCost = 2426754
     this.currentExpenditure = 76788;
     this.AvailableFunds = 140006;

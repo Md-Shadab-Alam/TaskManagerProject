@@ -7,57 +7,65 @@
 <div class="row">
     <div class="col-lg-3 pb-3" style="background-color: lightgray;">
         <div class="row">
+
             <div class="col-11 text-white text-center mx-auto rounded mt-1 pt-2 pb-2 font-weight-bold" 
                 style="background-color:darkgrey; font-family:'Arial Narrow Bold', sans-serif;">
+                <!-- Here we use UpperCasePipe is used to Transforms all the text to uppercase. -->
                 {{Designations | uppercase}}
             </div>
+
             <div class="col-12 text-center mt-2">
-                <img src="" width="120px">
+                <img src="" alt="pic "width="120px">
             </div>
+
             <div class="col-12 text-center pt-2 pb-2 font-weight-bold" style="font-family:Tahoma">
                 {{Username}}
             </div>
+
             <div class="col-12 text-center pt-2 pb-2" style="font-family: Arial">TEAM SUMMARY</div>
+
             <div class="col-12 mb-3">
                 <ul class="list-group">
+
+                    <!-- badges are not visible -->
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         NO. Of TEAM MEMBERS
-                        <span class="badge badge-secondary badge-pill" style="font-size: 10px;">{{NoOfTeamMembers}}</span>
+                        <span class="badge bg-secondary" style="font-size: 10px;">{{NoOfTeamMembers}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         TOTAL COST OF ALL PROJECTS
-                        <span class="badge badge-secondary badge-pill" style="font-size: 10px;">{{TotalCostOfAllProject}}</span>
+                        <span class="badge bg-secondary" style="font-size: 10px;">{{TotalCostOfAllProject}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         PENDING TASKS
-                        <span class="badge badge-secondary badge-pill" style="font-size: 10px;">{{PendingTasks}}</span>
+                        <span class="badge bg-secondary" style="font-size: 10px;">{{PendingTasks}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         UPCOMING PROJECTS
-                        <span class="badge badge-secondary badge-pill" style="font-size: 10px;">{{UpCommingProject}}</span>
+                        <span class="badge bg-secondary" style="font-size: 10px;">{{UpCommingProject}}</span>
                     </li>
                 </ul>
             </div>
             <div class="col-12 text-center pt-2 pb-2" style="font-family: Arial Narrow;">CLIENTS</div>
             <div class="col-12">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let client of Clients">{{client | slice: 0:10}}</li>
-                    <!-- <li class="list-group-item">ABC Info</li>
-                    <li class="list-group-item">ABC Info</li> -->
+                    <!-- here we use ngFor to iterate from Clients array from ts file-->
+                    <!-- and we are using  SlicePipe to display the subset of the element-->
+                    <li class="list-group-item" *ngFor="let client of Clients">{{client | slice: 0:15}}</li>
                 </ul>
-                {{TeamMembersSummary | json}}
             </div>
         </div>
     </div>
+
     <div class="col-lg-6">
         <div class="row">
-            <div class="col-12 pt-0 pb-2" style="background-color: gainsboro;">
+            <div class="col-12 pt-0 pb-2" style="background-color: lightgray;">
                 <div class="row mt-2">
                     <div class="col-6 text-left">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" 
                                 type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                Project A
+                                {{selectedProject || 'Project A'}}
                             </button>
                             
                             <ul class="dropdown-menu">
@@ -68,12 +76,13 @@
                     </div>
                     <div class="col-6 text-end">
                         <div class="dropdown">
+                            <!-- did not made it functionable -->
                             <button class="btn btn-secondary dropdown-toggle" 
                                 type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown">
                                 2019
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#" *ngFor="let year of Years">{{year}}</a>
+                                <a class="dropdown-item" href="#" *ngFor="let year of Years" onclick="return false">{{year}}</a>
                             </div>
                         </div>
                     </div>
@@ -149,6 +158,7 @@
                                                 <span *ngSwitchCase = "'Offline'" style="color: black;">{{members.Name}}</span>
                                                 
                                             </td>
+                                            <!-- icon not working -->
                                             <td><i class="fa fa-phone"></i>{{members.Status}}</td>
                                         </tr>
                                     </tbody>
